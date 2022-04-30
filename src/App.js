@@ -7,13 +7,13 @@ const BASE_URL = "https://open.er-api.com/v6/latest/USD"
 const App = () => {
 
     const [currencyOptions, setCurrencyOptions ] = useState([]);
-    console.log(currencyOptions);
+    
 
     useEffect(() => {
         fetch(BASE_URL)
             .then(res => res.json())
             .then(data => {
-                setCurrencyOptions([data.base, data.rates, ...Object.keys(data.rates)])
+                setCurrencyOptions([data.base, ...Object.keys(data.rates)])
             })
     }, [])
 
